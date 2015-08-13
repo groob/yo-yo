@@ -1,0 +1,6 @@
+#!/bin/bash
+
+/bin/chmod 777 /Library/Management/yo-yo/
+/bin/launchctl stop com.github.groob.yo-yo
+/bin/launchctl unload /Library/LaunchAgents/com.github.groob.yo-yo.plist
+/bin/launchctl load /Library/LaunchAgents/com.github.groob.yo-yo.plist
