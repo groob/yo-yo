@@ -17,6 +17,8 @@ import (
 
 var notificationDir = flag.String("n", "", "path to Yo notification files")
 
+var yoPath = flag.String("p", "/usr/local/bin/yo", "path to Yo executable")
+
 type yoOpts struct {
 	Title          string `json:"title" plist:"title"`
 	Subtitle       string `json:"subtitle" plist:"subtitle"`
@@ -98,7 +100,7 @@ func (yo yoOpts) toStringArray() []string {
 
 func (yo yoOpts) run() error {
 
-	cmd := exec.Command("/usr/local/bin/yo", yo.toStringArray()...)
+	cmd := exec.Command(*yoPath, yo.toStringArray()...)
 	var stdout, stderr bytes.Buffer
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr

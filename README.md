@@ -1,8 +1,8 @@
 Like [outset](https://github.com/chilcote/outset) for [yo](https://github.com/sheagcraig/yo)
 
-yo-yo traverses a directory for json or plist formatted code parameters for Yo, and creates notifications using yo. 
+yo-yo traverses a directory for json or plist formatted code parameters for Yo, and creates notifications using yo.
 Installing a LaunchAgent to watch a directory and trigger yo-yo allows applications running as root to deliver notifications to the session.
-yo-yo deletes the notification file after successfuly executing `yo`, promising at most once delivery. This won't work in a multi user context.
+yo-yo deletes the notification file after successfully executing `yo`, promising at most once delivery. This won't work in a multi user context.
 
 Notification file example:
 The keys in the json or plist file mirror yo's cli flags.
@@ -19,3 +19,8 @@ The keys in the json or plist file mirror yo's cli flags.
 </dict>
 </plist>
 ```
+
+yo-yo accepts the following options:
+
+* `-n`: The directory containing the files for notifications.
+* `-p`: The path to the Yo executable. Defaults to `/usr/local/bin/yo`.
