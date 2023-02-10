@@ -1,4 +1,4 @@
-module github.com/grahamgilbert/yo-yo
+module github.com/groob/yo-yo
 
 go 1.19
 
