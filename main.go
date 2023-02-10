@@ -12,7 +12,7 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"howett.net/plist"
+	"github.com/groob/plist"
 )
 
 var notificationDir = flag.String("n", "", "path to Yo notification files")
@@ -120,6 +120,7 @@ func fromJson(path string) (*yoOpts, error) {
 		return yo, err
 	}
 	defer file.Close()
+
 	return yo, json.NewDecoder(file).Decode(&yo)
 }
 
@@ -130,7 +131,11 @@ func fromPlist(path string) (*yoOpts, error) {
 		return yo, err
 	}
 	defer file.Close()
-	return yo, plist.NewDecoder(file).Decode(yo)
+	data, err := ioutil.ReadAll(file)
+	if err != nil {
+		return yo, err
+	}
+	return yo, plist.Unmarshal(data, &yo)
 }
 
 func init() {
